@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require("path"); 
 var find = require("./js/find");
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -10,7 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var noticias = require('./data/noticias.json');
 
-
+app.get('', function (req, res) {
+    res.send('Hola Mundo!');
+});
+app.get('/noticias', function (req, res) {
+    res.send('Esta api debe ser utilizada por POST');
+});
 app.post('/noticias', function (req, res) {
     var busqueda = req.body.buscar;
     var response = [];
@@ -25,5 +30,5 @@ app.post('/noticias', function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port ' + PORT);
 });
