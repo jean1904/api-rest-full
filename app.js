@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require("path"); 
 var find = require("./js/find");
+const PORT = process.env.PORT || 5000
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -23,6 +24,6 @@ app.post('/noticias', function (req, res) {
     res.send(response);
 });
 
-/*app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log('Example app listening on port 3000!');
-});*/
+});
